@@ -1,26 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
 /* Outer Body/Main Body */
-.outer-container{
+.outer-container {
     height: 100vh;
     width: 100vw;
-    background: #000;
+    background: #F1F5F9;
     display: flex;
 }
 
-/* Inner Card */
-.inner-container{
-    height: 20rem;
-    width: 18rem;
-    background: white;
-    margin: auto;
-}
 
 /* Navbar */
-.navbar{
+.navbar {
     width: 100vw;
     background: #0F172A;
     height: 4rem;
@@ -31,7 +24,8 @@
 }
 
 /* Toggle Button */
-.title-name , .themeToggleButton{
+.title-name,
+.themeToggleButton {
     font-size: 2rem;
     font-family: sans-serif;
     font-weight: bolder;
@@ -42,21 +36,66 @@
 }
 
 /* Light and Dark button */
-.darkThemeButton, .lightThemeButton{
-    height: 1.3rem;
-    width: 1.5rem;
-    background: wheat;
+.darkThemeButton,
+.lightThemeButton {
+    height: 1.4rem;
+    width: 1.6rem;
+    background: #1154884e;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.darkThemeButton{
+
+.darkThemeButton {
     border-radius: 50% 0 0 50%;
 }
-.lightThemeButton{
+
+.lightThemeButton {
     border-radius: 0 50% 50% 0;
 }
-.themeToggleButton i{
+
+.themeToggleButton i {
     font-size: .8rem;
-    color: black;
+    color: #FFFF;
+}
+
+/* Inner Card */
+.inner-container {
+    height: 20rem;
+    width: 16rem;
+    background: #FFFFFF;
+    margin: auto;
+    border: 2px solid #11101061;
+    border-radius: .5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.innerContainerTitles {
+    color: #000000b6;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+/* Amount Input Container. */
+.AmountInputContainer {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.AmountInputContainer input {
+    height: 2rem;
+    background: #D9D9D9;
+    border-radius: .2rem;
+    border: 2px solid #27252548;
+    outline: none;
+    padding: 0 0 0 .5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000b6;
 }
