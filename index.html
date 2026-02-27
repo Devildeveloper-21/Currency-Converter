@@ -17,40 +17,41 @@
   <body>
     <div class="outer-container">
       <nav class="navbar">
-        <div class="title-name">Convertly</div>
+        <div class="title-name" onclick="location.reload()">Convertly</div>
         <div class="themeToggleButton">
-          <div class="darkThemeButton"><i class="fa-regular fa-moon"></i></div>
-          <div class="lightThemeButton"><i class="fa-solid fa-sun"></i></div>
+          <div class="darkThemeButton" id="darkThemeButton"><i class="fa-regular fa-moon"></i></div>
+          <div class="lightThemeButton" id="lightThemeButton"><i class="fa-solid fa-sun"></i></div>
         </div>
       </nav>
       <div class="inner-container">
         <div class="AmountInputContainer">
           <div class="innerContainerTitles">Amount</div>
-          <input type="number" class="AmountInputBox" />
+          <input type="number" class="AmountInputBox" id="currencyInput" />
         </div>
         <div class="convertFromToContainer">
           <div class="convertFromContainer">
             <div class="fromTitle innerContainerTitles">From</div>
             <select name="currency" id="currency" value="--">
               <option value="USD">USD</option>
-              <option value="USD">INR</option>
-              <option value="USD">UAE</option>
+              <option value="INR">INR</option>
+              <option value="UAE">UAE</option>
             </select>
           </div>
           <div class="convertToContainer">
             <div class="toTitle innerContainerTitles">To</div>
             <select name="currency" id="">
               <option value="USD">USD</option>
-              <option value="USD">INR</option>
-              <option value="USD">UAE</option>
+              <option value="INR">INR</option>
+              <option value="UAE">UAE</option>
             </select>
           </div>
         </div>
         <div class="convertButtonField">
-          <button class="convertButton">Convert</button>
+          <button class="convertButton" id="convertButton">Convert</button>
         </div>
-        <div class="outputField"></div>
+        <div class="outputField" id="outputField"></div>
       </div>
     </div>
+    <script src="script.js" type="module"></script>
   </body>
 </html>
