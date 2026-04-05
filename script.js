@@ -6,6 +6,10 @@ const lightThemeIcon = document.querySelector(".lightThemeButton i");
 // Dark Theme Listener.
 darkThemeButton.addEventListener("click", function () {
   darkThemeButton.classList.add("showAnimation");
+  document.body.classList.add("themeToggle");
+  setTimeout(() => {
+    document.body.classList.remove("themeToggle");
+  }, 1000);
 
   darkThemeButton.style.background = "white";
   darkThemeIcon.style.color = "black";
@@ -13,56 +17,60 @@ darkThemeButton.addEventListener("click", function () {
   lightThemeButton.style.background = "black";
   lightThemeIcon.style.color = "white";
 
-  document.body.classList.toggle("darkTheme");
+  document.body.classList.add("darkTheme");
 
-  darkThemeButton.addEventListener("animationend", function () {
-    darkThemeButton.classList.remove("showAnimation");
-  });
+  lightThemeButton.classList.remove("showAnimation");
 });
 
 // Light Theme Listener.
 lightThemeButton.addEventListener("click", function () {
   lightThemeButton.classList.add("showAnimation");
+  document.body.classList.add("themeToggle");
+  setTimeout(() => {
+    document.body.classList.remove("themeToggle");
+  }, 1000);
 
   lightThemeButton.style.background = "white";
   lightThemeIcon.style.color = "black";
 
   darkThemeButton.style.background = "black";
   darkThemeIcon.style.color = "white";
-  document.body.classList.toggle("darkTheme");
+  document.body.classList.remove("darkTheme");
 
-  lightThemeButton.addEventListener("animationend", function () {
-    lightThemeButton.classList.remove("showAnimation");
-  });
+  darkThemeButton.classList.remove("showAnimation");
 });
 
 let rate;
 const convertButton = document.getElementById("convertButton");
 const outputField = document.getElementById("outputField");
 convertButton.addEventListener("click", function () {
-  const fromCurrency = document.getElementById("fromCurrency").value;
-  const toCurrency = document.getElementById("toCurrency").value;
+  const fromCurrency = document
+    .getElementById("fromCurrency")
+    .value.toUpperCase();
+  const toCurrency = document.getElementById("toCurrency").value.toUpperCase();
   getCurrencyInfo(fromCurrency, toCurrency);
 });
 
-function convertCurrency() {
+function convertCurrency(rate) {
   const currencyInput = Number(document.getElementById("currencyInput").value);
+  if (!currencyInput) {
+    alert("Enter Valid Input");
+    return;
+  }
   let amount = currencyInput * rate;
-  outputField.innerText = "";
   outputField.innerText = amount.toFixed(2);
 }
 
 async function getCurrencyInfo(getFromCurrency, getToCurrency) {
   try {
     const res = await fetch(
-      `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${getFromCurrency}.json`,
-    )
-      const data = await res.json();
-      rate= data[getFromCurrency][getToCurrency];
-      convertCurrency();
-    
+      `https://open.er-api.com/v6/latest/${getFromCurrency}`,
+    );
+    const data = await res.json();
+    let rate = data.rates[getToCurrency];
+    console.log(rate);
+    convertCurrency(rate);
   } catch (error) {
-    console.log("Data fetch failed",error);
-    
+    console.log("Data fetch failed", error);
   }
 }

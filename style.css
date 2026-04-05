@@ -82,27 +82,39 @@
 }
 
 .showAnimation {
-    animation: show-animation .4s 1 ease-in;
+    animation: show-animation .5s 1 ease-in;
+}
+
+.themeToggle{
+    animation: themeFade .4s ease-out;
 }
 
 @keyframes show-animation {
     0% {
-        background: rgba(255, 255, 255, 0.553);
+        opacity: 0%;
     }
 
     100% {
-        background: white;
+        opacity: 100%;
     }
 }
 
-
+@keyframes themeFade {
+    0%{
+        opacity: .6;
+    }
+    100%{
+        opacity: 1;
+    }
+    
+}
 
 
 
 /* Inner Card */
 .inner-container {
     height: 15rem;
-    width: auto;
+    width:14rem;
     background: var(--secondary);
     margin: auto;
     border: 2px solid var(--borders);
@@ -144,6 +156,11 @@
     color: var(--text);
 
 }
+
+.AmountInputBox{
+ padding: 0 0 0 .4rem;
+}
+
 
 .convertFromToContainer {
     display: flex;
