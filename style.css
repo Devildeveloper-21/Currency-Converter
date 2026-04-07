@@ -86,7 +86,7 @@
 }
 
 .themeToggle{
-    animation: themeFade .4s ease-out;
+    animation: themeFade .8s ease-out;
 }
 
 @keyframes show-animation {

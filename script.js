@@ -1,3 +1,4 @@
+import { currencySymbols } from "./currencySigns.js";
 const lightThemeButton = document.getElementById("lightThemeButton");
 const darkThemeButton = document.getElementById("darkThemeButton");
 const darkThemeIcon = document.querySelector(".darkThemeButton i");
@@ -43,33 +44,33 @@ lightThemeButton.addEventListener("click", function () {
 let rate;
 const convertButton = document.getElementById("convertButton");
 const outputField = document.getElementById("outputField");
+
 convertButton.addEventListener("click", function () {
-  const fromCurrency = document
-    .getElementById("fromCurrency")
-    .value.toUpperCase();
-  const toCurrency = document.getElementById("toCurrency").value.toUpperCase();
-  getCurrencyInfo(fromCurrency, toCurrency);
-});
-
-function convertCurrency(rate) {
-  const currencyInput = Number(document.getElementById("currencyInput").value);
-  if (!currencyInput) {
-    alert("Enter Valid Input");
-    return;
+  const fromCurrency = document.getElementById("fromCurrency").value.toUpperCase();
+    const toCurrency = document.getElementById("toCurrency").value.toUpperCase();
+    getCurrencyInfo(fromCurrency, toCurrency);
+  });
+  
+  function convertCurrency(rate, symbol) {
+    const currencyInput = Number(document.getElementById("currencyInput").value);
+    if (!currencyInput) {
+      alert("Enter Valid Input");
+      return;
+    }
+    
+    let amount = currencyInput * rate;
+    outputField.innerText = symbol + " " + amount.toFixed(2);
   }
-  let amount = currencyInput * rate;
-  outputField.innerText = amount.toFixed(2);
-}
-
-async function getCurrencyInfo(getFromCurrency, getToCurrency) {
-  try {
-    const res = await fetch(
-      `https://open.er-api.com/v6/latest/${getFromCurrency}`,
-    );
-    const data = await res.json();
-    let rate = data.rates[getToCurrency];
-    console.log(rate);
-    convertCurrency(rate);
+  
+  async function getCurrencyInfo(getFromCurrency, getToCurrency) {
+    try {
+      const res = await fetch(
+        `https://open.er-api.com/v6/latest/${getFromCurrency}`,
+      );
+      const data = await res.json();
+      let rate = data.rates[getToCurrency];
+      let symbol = currencySymbols[getToCurrency];
+    convertCurrency(rate, symbol);
   } catch (error) {
     console.log("Data fetch failed", error);
   }
